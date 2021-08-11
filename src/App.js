@@ -2,6 +2,8 @@
 import "./App.css"
 import React, { Component } from "react";
 import Bar from "./components/Bar"
+
+
 class App extends Component
 {
   state = {
@@ -12,7 +14,7 @@ class App extends Component
     currentStep:0,
     count:10,
     delay:100,
-    alforithm:"",
+    algorithm:"",
     timeouts: [],
   };
 
@@ -35,8 +37,19 @@ class App extends Component
     this.setState({
       array:temp,
       arraySteps:[temp],
+      currentStep:0,
     });
-    
+  }
+
+  changeArray = (index,value) =>
+  {
+    let arr = this.state.array;
+    arr[index] = value;
+    this.setState({
+      array:arr,
+      arraySteps:[arr],
+      currentStep:0,
+    });
   }
 
   render()
@@ -48,12 +61,19 @@ class App extends Component
         index = {index}
         length = {value}
         color = {0}
+        changeArray = {this.changeArray}
       />);
     });
+    
+    
     return (
   
         <div className='app'>
-         {bars}
+          <div className="frame">
+            <div className="barsDiv container card">{bars}</div>
+          </div>
+          <div className="control-panel"></div>
+          <div className="panel"></div>
         </div>
     );
   }
