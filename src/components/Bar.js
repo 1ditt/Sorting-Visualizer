@@ -80,7 +80,7 @@ function Bar({index,length,color,changeArray})
         </div>
         <div className="side front">
             <div className="color-bar front-color-bar" style={front_back_right_left}>
-                <input type="number" className="input" length={length} value={len} style={inputStyle} onChange={handleChange}></input>
+                <input type="number" className="input" length={length} value={length} style={inputStyle} onChange={handleChange}></input>
             </div>
                 
         </div>

@@ -24,3 +24,33 @@
   height:220px;
 }
 
+.controller{
+  background:rgb(53, 49, 49);
+  margin:0 1em;
+  border:1px solid;
+  height:3em;
+  width:3em;
+  border-radius: 100%;
+  background: transparent;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+ 
+}
+
+
+.control-buttons{
+  height:4em;
+  width:3.5em;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-panel{
+ display: flex;
+ justify-content: center;
+ text-align: center;
+}
