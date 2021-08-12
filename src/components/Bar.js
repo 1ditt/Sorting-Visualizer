@@ -60,13 +60,19 @@ function Bar({index,length,color,changeArray})
     }
 
     const increment = (e) =>{
-        setLen(len+1);
-        changeArray(index,len+1);
+        if(len !== 200)
+        {
+            setLen(len+1);
+            changeArray(index,len+1);
+        }
+        
     }
 
     const decrement = (e) =>{
-        setLen(len-1);
-        changeArray(index,len-1);
+        if(len!==0){
+            setLen(len-1);
+            changeArray(index,len-1);
+        }
     }
     
     return( <div className="bar">

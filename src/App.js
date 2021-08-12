@@ -77,9 +77,7 @@ class App extends Component
       array:temp,
       arraySteps:[temp],
       currentStep:0,
-    },()=>{
-      this.generateSteps();
-    });
+    },() => {this.generateSteps()});
   }
 
   changeArray = (index,value) =>
@@ -90,7 +88,7 @@ class App extends Component
       array:arr,
       arraySteps:[arr],
       currentStep:0,
-    });
+    },()=>{this.generateSteps();});
   }
 
   previousState = () => {
@@ -151,7 +149,11 @@ class App extends Component
       },this.state.delay*i);
       i++;
     }
-  }
+    this.setState({
+      timeouts:timeouts,
+    });
+  };
+
   render()
   {
     let bars = this.state.array.map((value,index)=>{

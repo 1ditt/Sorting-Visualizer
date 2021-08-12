@@ -17,7 +17,7 @@ const bs = (array,position,arraySteps,colorsSteps) => {
             colorKey[j] = 0;
             colorKey[j+1] = 0;
         }
-        colorKey[arraySteps.length-1-i] = 2;
+        colorKey[array.length-1-i] = 2;
         arraySteps.push(array.slice());
         colorsSteps.push(colorKey.slice());
     }
