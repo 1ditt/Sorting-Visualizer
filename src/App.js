@@ -2,11 +2,13 @@
 import "./App.css"
 import React, { Component } from "react";
 import Bar from "./components/Bar"
-import {BsFillPlayFill} from "react-icons/bs";
+import {BsFillPlayFill, BsPauseFill} from "react-icons/bs";
 import {BsSkipForwardFill} from "react-icons/bs";
 import {BsSkipBackwardFill} from "react-icons/bs";
-import {BsPause} from "react-icons/bs";
 import BubbleSort from "./algorithmns/BS";
+import {BsArrowClockwise} from "react-icons/bs";
+import InsertionSort from "./algorithmns/IS";
+import SelectionSort from "./algorithmns/SL";
 
 class App extends Component
 {
@@ -17,13 +19,18 @@ class App extends Component
     colorsSteps: [],
     currentStep:0,
     count:10,
-    delay:100,
+    delay:200,
     algorithm:"Bubble sort",
     timeouts: [],
+    count_click:1,
+    set_button:true,
   };
 
+  
   ALGORITHMS = {
     'Bubble sort':BubbleSort,
+    'Insertion sort':InsertionSort,
+    'Selection sort':SelectionSort,
   }
 
   componentDidMount(){
@@ -77,12 +84,14 @@ class App extends Component
       array:temp,
       arraySteps:[temp],
       currentStep:0,
+      count_click:1,
     },() => {this.generateSteps()});
   }
 
   changeArray = (index,value) =>
   {
     let arr = this.state.array;
+    this.clearColorKey();
     arr[index] = value;
     this.setState({
       array:arr,
@@ -103,6 +112,7 @@ class App extends Component
         currentStep:currentStep,
         array:this.state.arraySteps[currentStep],
         colorKey:this.state.colorsSteps[currentStep],
+        count_click:1,
       })
     }
   };
@@ -119,6 +129,7 @@ class App extends Component
         currentStep:currentStep,
         array:this.state.arraySteps[currentStep],
         colorKey:this.state.colorsSteps[currentStep],
+        count_click:1,
       })
     }
   };
@@ -136,11 +147,18 @@ class App extends Component
     this.clearTimeouts();
     let timeouts = [];
     let i =0;
-    while(i < steps.length)
+    
+    this.setState({
+      count_click:this.state.count_click + 1,
+    })
+    //this.state.count_click += 1;
+    while((i < steps.length) && this.state.set_button)
     {
+      
       let timeout = setTimeout(()=>{
         let currentStep = this.state.currentStep;
         this.setState({
+          //count_click:this.state.count_click + 1,
           array:steps[currentStep],
           colorKey:colorsSteps[currentStep],
           currentStep:currentStep+1,
@@ -153,6 +171,28 @@ class App extends Component
       timeouts:timeouts,
     });
   };
+
+  stop = () => {
+    this.setState({
+      count_click:this.state.count_click + 1,
+      set_button:false,
+    });
+  }
+
+  change_algo = (e) => {
+    let value = e.target.name;
+    this.generateRandomArray();
+    this.clearColorKey();
+    this.setState({
+      algorithm:value,
+      currentStep:0,
+      count_click:1,
+    },() => {this.generateSteps();});
+  }
+
+  new_turn = () => {
+    this.generateRandomArray();
+  }
 
   render()
   {
@@ -170,21 +210,39 @@ class App extends Component
     if(this.state.arraySteps.length === this.state.currentStep)
     {
       playButton = (
-        <button className="controller">
-          <BsPause></BsPause>
+        <button className="controller" onClick={this.new_turn}>
+            <BsArrowClockwise></BsArrowClockwise>
         </button>
-      )
-    }else{
-      playButton = (
-        <button className = "controller" onClick={this.start}>
-          <BsFillPlayFill></BsFillPlayFill>
-        </button>
-      )
+      );
+    }else
+    {
+      if(this.state.count_click%2===0)
+      {
+        playButton = (
+          <button className="controller" onClick={this.stop}>
+            <BsPauseFill></BsPauseFill>
+          </button>
+        )
+      }
+      else
+      {
+        playButton = (
+          <button className = "controller" onClick={this.start}>
+            <BsFillPlayFill></BsFillPlayFill>
+          </button>
+        )
     }
+  }
     
     return (
   
         <div className='app'>
+          <nav className="navbar">
+            <h1 class="text">Sorting Visualizer</h1>
+            <button class="btn" type="submit" onClick={this.change_algo} name="Bubble sort">BUBBLE SORT</button>
+            <button class="btn" type="submit" onClick={this.change_algo} name="Insertion sort">INSERTION SORT</button>
+            <button class="btn" type="submit" onClick={this.change_algo} name="Selection sort">SELECTION SORT</button>
+          </nav>
           <div className="frame">
             <div className="barsDiv container card">{bars}</div>
           </div>

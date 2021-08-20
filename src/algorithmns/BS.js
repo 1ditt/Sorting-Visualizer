@@ -6,14 +6,19 @@ const bs = (array,position,arraySteps,colorsSteps) => {
     {
         for(let j=0;j<array.length-i-1;j++)
         {
-            if(array[j] > array[j+1])
-            {
-                array = swap(array,j,j+1);
-            }
-            arraySteps.push(array.slice());
             colorKey[j] = 1;
             colorKey[j+1] = 1;
             colorsSteps.push(colorKey.slice());
+            arraySteps.push(array.slice());
+            if(array[j] > array[j+1])
+            {
+                array = swap(array,j,j+1);
+                arraySteps.push(array.slice());
+                colorKey[j] = 3;
+                colorKey[j+1] = 3;
+                colorsSteps.push(colorKey.slice());
+            }
+            
             colorKey[j] = 0;
             colorKey[j+1] = 0;
         }

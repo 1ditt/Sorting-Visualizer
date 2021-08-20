@@ -7,7 +7,8 @@ function Bar({index,length,color,changeArray})
 
     const colors = [['rgba(61,90,241,0.5)','rgba(61,90,241,0.2)'],
                     ['rgba(255,48,79,1)','rgba(255,48,79,0.5)'],
-                    ['rgba(131,252,90,0.5)','rgba(131,251,90,0.2)']]
+                    ['rgba(131,252,90,0.5)','rgba(131,251,90,0.2)'],
+                    ['rgba(255,255,0,1)','rgba(255,255,0,0.5)']]
     const bottom={
         transform:`translateY(${200-length}px) rotateX(-90deg)`,
         backgroundColor:`${colors[color][0]}`,

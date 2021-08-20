@@ -54,3 +54,26 @@
  justify-content: center;
  text-align: center;
 }
+
+.navbar{
+  background-color: black;
+  display:flex;
+  text-align: center;
+  justify-content: center;
+  height:100%;
+  width:100%;
+}
+
+.btn{
+  border-radius: 10%;
+  margin:auto;
+  padding: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+}
+
+.text{
+  color: white;
+  text-transform: uppercase;
+  margin-left:30px;
+}
