@@ -46,7 +46,7 @@ const is = (array,position,arraySteps,colorsSteps) => {
             
         }
         array[j+1] = key;
-        if(flag!=1)
+        if(flag!==1)
         {
             colorKey[j] = 0;
             colorKey[i] = 0;

@@ -9,6 +9,7 @@ import BubbleSort from "./algorithmns/BS";
 import {BsArrowClockwise} from "react-icons/bs";
 import InsertionSort from "./algorithmns/IS";
 import SelectionSort from "./algorithmns/SL";
+import CustomizedSlider from "./components/demo.js";
 
 class App extends Component
 {
@@ -19,7 +20,7 @@ class App extends Component
     colorsSteps: [],
     currentStep:0,
     count:10,
-    delay:200,
+    delay:500,
     algorithm:"Bubble sort",
     timeouts: [],
     count_click:1,
@@ -154,7 +155,6 @@ class App extends Component
     //this.state.count_click += 1;
     while((i < steps.length) && this.state.set_button)
     {
-      
       let timeout = setTimeout(()=>{
         let currentStep = this.state.currentStep;
         this.setState({
@@ -181,6 +181,7 @@ class App extends Component
 
   change_algo = (e) => {
     let value = e.target.name;
+    document.getElementById("sorting_type").innerHTML = e.target.textContent;
     this.generateRandomArray();
     this.clearColorKey();
     this.setState({
@@ -192,6 +193,12 @@ class App extends Component
 
   new_turn = () => {
     this.generateRandomArray();
+  }
+
+  change_delay = (value) => {
+    this.setState({
+      delay:value,
+    });
   }
 
   render()
@@ -243,6 +250,7 @@ class App extends Component
             <button class="btn" type="submit" onClick={this.change_algo} name="Insertion sort">INSERTION SORT</button>
             <button class="btn" type="submit" onClick={this.change_algo} name="Selection sort">SELECTION SORT</button>
           </nav>
+          <h1 className="heading" id="sorting_type">BUBBLE SORT</h1>
           <div className="frame">
             <div className="barsDiv container card">{bars}</div>
           </div>
@@ -257,7 +265,9 @@ class App extends Component
               </button>
             </div>
           </div>
-          <div className="panel"></div>
+          <div className="panel"><CustomizedSlider
+                                  change_delay = {this.change_delay}/>
+          </div>
         </div>
     );
   }
