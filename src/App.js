@@ -10,6 +10,7 @@ import {BsArrowClockwise} from "react-icons/bs";
 import InsertionSort from "./algorithmns/IS";
 import SelectionSort from "./algorithmns/SL";
 import CustomizedSlider from "./components/demo.js";
+import Pathfinding from "./Pathfinding_algo/pathfinding.js";
 
 class App extends Component
 {
@@ -19,7 +20,7 @@ class App extends Component
     colorKey: [],
     colorsSteps: [],
     currentStep:0,
-    count:10,
+    count:20,
     delay:500,
     algorithm:"Bubble sort",
     timeouts: [],
@@ -268,6 +269,7 @@ class App extends Component
           <div className="panel"><CustomizedSlider
                                   change_delay = {this.change_delay}/>
           </div>
+          <div><Pathfinding/></div>
         </div>
     );
   }

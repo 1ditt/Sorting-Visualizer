@@ -64,7 +64,7 @@ function Bar({index,length,color,changeArray})
         if(len !== 200)
         {
             setLen(len+1);
-            changeArray(index,len+1);
+            changeArray(index,len);
         }
         
     }
@@ -72,7 +72,7 @@ function Bar({index,length,color,changeArray})
     const decrement = (e) =>{
         if(len!==0){
             setLen(len-1);
-            changeArray(index,len-1);
+            changeArray(index,len);
         }
     }
     

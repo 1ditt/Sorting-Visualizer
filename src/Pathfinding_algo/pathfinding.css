@@ -1,0 +1,110 @@
+.grid {
+    margin: 150px 100px 100px 110px;    
+    padding-top: 100px;
+  }
+
+
+.center{
+  position: absolute;
+  height: 50px;
+  left: 80%;
+  top:10%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.path-finder{
+  position: relative;
+}
+
+.button{
+  
+  font-size: 20px;
+  background-color: aqua;
+  padding: 5px;
+}
+
+.new-div{
+  position: absolute;
+  width: fit-content;
+  left: 7%;
+}
+
+.new-div1{
+  position: absolute;
+  width: fit-content;
+  
+  top:7%;
+  left:7%;
+}
+
+.label{
+  margin-right: 43px;
+}
+
+.label1{
+  margin-right: 20px;
+}
+
+input[type='number']{
+  width: 50px;
+} 
+
+.new-div3{
+  position: absolute;
+  width: fit-content;
+  
+  top:7%;
+  left:30%;
+}
+
+.new-div2{
+  position: absolute;
+  width: fit-content;
+  
+  left:30%;
+}
+
+
+.start_block{
+  width: 24px;
+  height:24px;
+  background-color: green;
+  position:absolute;
+  left: 49%;
+}
+
+.final_block{
+  width: 24px;
+  height:24px;
+  background-color: red;
+  position:absolute;
+  left: 49%;
+  top:7%;
+}
+
+.start_text h4{
+  position:absolute;
+  left: 52%;
+  top:-3.2%
+}
+
+
+.final_text h4{
+  position:absolute;
+  left: 52%;
+  top:4%
+}
+
+
+.start_button{
+  position:absolute;
+  left: 60%;
+  top:6.5%;
+}
+
+.start_button button {
+  background-color: aqua;
+  padding: 4px;
+  font-size: 20px;
+}
